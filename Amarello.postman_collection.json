@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "0f665868-8b2d-46c1-93bd-36b0a39cc4af",
+		"name": "Amarello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Access Token",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "SS2yZ9VgaCmNsswGvJcfnuwVAyxpNKefbgUcbtSDhJQtkYBwkoEnegCGOt0RxuoG",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "DBzlLLeNDJFEzcZdJf6pBMAKznv3Ol2v3TUKufMKPEo6bUWo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"description": "[object Object]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://34.117.250.154.nip.io/oauth2/acesstoken",
+					"protocol": "https",
+					"host": [
+						"34",
+						"117",
+						"250",
+						"154",
+						"nip",
+						"io"
+					],
+					"path": [
+						"oauth2",
+						"acesstoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtain Pets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "uuy07DAcFKuDkwgWegpOQAQNQAvR",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "DBzlLLeNDJFEzcZdJf6pBMAKznv3Ol2v3TUKufMKPEo6bUWo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://34.117.250.154.nip.io/v1/amarello/petstore/pets",
+					"protocol": "https",
+					"host": [
+						"34",
+						"117",
+						"250",
+						"154",
+						"nip",
+						"io"
+					],
+					"path": [
+						"v1",
+						"amarello",
+						"petstore",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Pet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6Q66ivQpnGlNdAG8qAZKzIbPX8U0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "DBzlLLeNDJFEzcZdJf6pBMAKznv3Ol2v3TUKufMKPEo6bUWo",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"cat\",\r\n    \"price\": 500.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://34.117.250.154.nip.io/v1/amarello/petstore/pets",
+					"protocol": "https",
+					"host": [
+						"34",
+						"117",
+						"250",
+						"154",
+						"nip",
+						"io"
+					],
+					"path": [
+						"v1",
+						"amarello",
+						"petstore",
+						"pets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtain a Pet",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ozDd6wWFsXtG6WsWQ8zAXQgrEmRL",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "DBzlLLeNDJFEzcZdJf6pBMAKznv3Ol2v3TUKufMKPEo6bUWo",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://34.117.250.154.nip.io/v1/amarello/petstore/pets/800",
+					"protocol": "https",
+					"host": [
+						"34",
+						"117",
+						"250",
+						"154",
+						"nip",
+						"io"
+					],
+					"path": [
+						"v1",
+						"amarello",
+						"petstore",
+						"pets",
+						"800"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

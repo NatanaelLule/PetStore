@@ -1,0 +1,164 @@
+openapi: 3.0.0
+info:
+  title: AmarelloEvaluation 
+  version: '1.0'
+  termsOfService: http://example.com/about/terms
+  contact:
+    name: API Docs
+paths:
+  /pets:
+    get:
+      security:
+        - ApiKeyAuth: []
+      description: Consulta la lista de Mascotas existentes
+      summary: Get Pet
+      operationId: GetPets
+      tags:
+        - PetStore
+      responses:
+        '200':
+          description: OK,
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPetsResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    post:
+      security:
+        - ApiKeyAuth: []
+      description: Crea una nueva Mascota
+      summary: Create Pet
+      operationId: CreatePets
+      tags:
+        - PetStore
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePetRequest'
+        description: Parámetros que se envian en el request para crear una mascota
+        required: true
+      responses:
+        '200':
+          description: OK,
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePetsResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    
+  /pets/{petId}:
+    get:
+      security:
+        - ApiKeyAuth: []
+      description: Consulta una mascota en especifico
+      summary: Get an instance Pet
+      operationId: GetPet
+      tags:
+        - PetStore
+      parameters:
+        - in: path
+          name: petId
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: OK,
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPetResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+servers:
+  - url: https://34.117.250.154.nip.io/v1/amarello/petstore
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    CreatePetRequest:
+      description: Parámetros que se envian en el request para crear una mascota
+      type: object
+      properties:
+        type:
+          type: string
+        price:
+          type: number
+      required:
+        - type
+        - price
+    CreatePetsResponse:
+      type: object
+      properties:
+        pet:
+          type: object
+          properties:
+            type:
+              type: string
+            price:
+              type: number
+        message:
+          type: string
+              
+      example:
+        pet:
+          type: cat
+          price: 500
+        message: success
+    GetPetResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        price:
+          type: string
+      example:
+        id: 800
+        type: dog
+        price: 299.99
+    GetPetsResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+          type:
+            type: string
+          expiresIn:
+            type: string
+          price:
+            type: number
+      example:
+        - Id: 1
+          type: cat
+          price: 700.13
+        - Id: 2
+          type: dog
+          price: 800.99
